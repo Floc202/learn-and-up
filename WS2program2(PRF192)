@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+	int n;
+	double tf, ti, income;
+//income
+	printf("Your income this year: ");
+		scanf("%lf", &income);
+//personal pending amount ($/month)
+	double pa=9000000;
+//alimony $/month/dependent
+	double pd=3600000;
+	printf("Number of dependent: ");
+		scanf("%d", &n);
+	tf =12*(pa+(n*pd));	
+//%lf= 12*(%lf+(%d*%lf)
+	printf("Tax-free income: %lf\n", tf);
+
+//taxable income
+	ti =income-tf;
+	if(ti<0){
+		printf("Taxable income: 0\n");
+	}
+	else{
+		printf("Taxable income: %lf\n", ti);
+	}
+	double tax;
+//ti<=0 them income tax=0
+	if(ti<=0){
+		printf("Income tax free");
+	}	
+//level1
+	else if(ti<=5000000){
+		tax = ti/100*5;
+		printf("Income tax: %lf", tax);
+	}
+//level2
+	else if(ti <= 10000000){
+		tax = ti/100*10;
+		printf("Income tax: %lf", tax);
+	}
+//level3
+	else if(ti <= 18000000){
+		tax = ti/100*15;
+		printf("Income tax: %lf", tax);
+	}
+//level4
+	else {
+		tax = ti/100*20;
+		printf("Income tax: %lf", tax);
+    }
+
+	return 0;
+}
